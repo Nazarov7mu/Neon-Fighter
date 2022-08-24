@@ -161,7 +161,7 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 6571115188356047547}
   _speed: 50
   _tagToAvoid: Player
-  _damage: 10
+  _damage: 50
 --- !u!50 &6571115188356047547
 Rigidbody2D:
   serializedVersion: 4

@@ -8,16 +8,13 @@ namespace Enemy
     {
         [SerializeField] private GameObject[] _enemies;
     
+        [Header("Scripts")]
+        [SerializeField] private MapSpawnPoints _mapSpawnPoints;
+
         [Header("Stats")]
-        [SerializeField] private float _spawnDelay = 10;
-    
-        [Header("Map Stats")]
-        [SerializeField] private float _xMin;
-        [SerializeField] private float _xMax;
-
-        [SerializeField] private float _yMin;
-        [SerializeField] private float _yMax;
-
+        [SerializeField] private int _spawnDelayMin = 3;
+        [SerializeField] private int _spawnDelayMax = 10;
+        
         private void Start()
         {
             StartCoroutine(SpawnEnemy());
@@ -25,9 +22,12 @@ namespace Enemy
 
         private IEnumerator SpawnEnemy()
         {
-            yield return new WaitForSeconds(_spawnDelay);
-        
-            Vector2 pos = new(Random.Range(_xMin, _xMax), Random.Range(_yMin, _yMax));
+            int randomDelay = Random.Range(_spawnDelayMin, _spawnDelayMax);
+            yield return new WaitForSeconds(randomDelay);
+
+            int randomPoint = Random.Range(0, _mapSpawnPoints.SpawnPoints.Length);
+            Vector2 pos = _mapSpawnPoints.SpawnPoints[randomPoint].position;
+            
             GameObject someEnemy = _enemies[Random.Range(0, _enemies.Length)];
             Instantiate(someEnemy, pos, transform.rotation);
 
