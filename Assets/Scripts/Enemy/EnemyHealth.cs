@@ -1,13 +1,23 @@
-﻿using UnityEngine;
+﻿using Interfaces;
+using UnityEngine;
 
 namespace Enemy
 {
-    public class EnemyHealth : MonoBehaviour
+    public class EnemyHealth : MonoBehaviour, IDamageable
     {
-        private GameObject _deathParticles;
+        [SerializeField] private GameObject _deathParticles;
         
-        private float _health;
+        private float _health = 100;
 
+        public void ApplyDamage(int value)
+        {
+            _health -= value;
+            if (_health <= 0)
+            {
+                Die();
+            }
+        }
+        
         private void Die()
         {
             Instantiate(_deathParticles, transform.position, transform.rotation);

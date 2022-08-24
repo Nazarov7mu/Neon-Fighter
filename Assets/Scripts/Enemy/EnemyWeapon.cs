@@ -5,27 +5,58 @@ namespace Enemy
 {
     public class EnemyWeapon : MonoBehaviour
     {
+        [Header("Scripts")]
+        [SerializeField] private EnemyTarget _enemyTarget;
+        
+        [Header("Weapon parts")]
         [SerializeField] private GameObject _bullet;
         [SerializeField] private GameObject _barrel;
-        [SerializeField] private float _minDistance;
+        
+        [Header("Stats")]
+        [SerializeField] private float _shootingRange = 10;
+        [SerializeField] private float _minRechargeTime = 1;
+        [SerializeField] private float _maxRechargeTime = 3;
 
         private Transform _target;
         private bool _canShoot;
 
+        private void Start()
+        {
+            _target = _enemyTarget.Target;
+
+            StartCoroutine(Reload());
+        }
+
         private void Update()
         {
+            if (_target == null) return;
+            
+            CheckShootingRange();
+        }
+
+        private void CheckShootingRange()
+        {
             //If target is in reach -> shoot
-            if (Vector2.Distance(transform.position, _target.position) > _minDistance - 5)
+            if (Vector2.Distance(transform.position, _target.position) < _shootingRange)
             {
-                if (_canShoot) StartCoroutine(Fire());
+                if (_canShoot)
+                {
+                    Shoot();
+                    StartCoroutine(Reload());
+                }
             }
         }
 
-        private IEnumerator Fire()
+        private void Shoot()
+        {
+            Instantiate(_bullet, _barrel.transform.position, _barrel.transform.rotation);
+        }
+
+        private IEnumerator Reload()
         {
             _canShoot = false;
-            Instantiate(_bullet, _barrel.transform.position, _barrel.transform.rotation);
-            yield return new WaitForSeconds(1.2f);
+            float randomRechargeTime = Random.Range(_minRechargeTime, _maxRechargeTime);
+            yield return new WaitForSeconds(randomRechargeTime);
             _canShoot = true;
         }
     }
