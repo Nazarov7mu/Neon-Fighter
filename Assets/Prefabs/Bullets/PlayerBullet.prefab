@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2aae9fc37d304a51a0b7c971ff948d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionEffect: {fileID: 0}
+  _explosionEffect: {fileID: 1483785641966012315, guid: 28a5981f86c1f2847be4d9316f1fd407, type: 3}
   _rigidbody2D: {fileID: 6571115188356047547}
   _speed: 50
   _tagToAvoid: Player

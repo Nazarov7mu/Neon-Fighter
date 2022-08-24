@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48c3ea4ba12c4f66953d025aaa1788f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathParticles: {fileID: 0}
+  _deathParticles: {fileID: 1483785641966012315, guid: b5be7fa08d88c9649ab103adbd8fa61d, type: 3}
 --- !u!114 &6221013284750821209
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthSlider: {fileID: 0}
-  _deathParticles: {fileID: 0}
+  _deathParticles: {fileID: 1483785641966012315, guid: fe90b16d11e253b4cbb9a0931de6882f, type: 3}
 --- !u!114 &3236852251918503603
 MonoBehaviour:
   m_ObjectHideFlags: 0
