@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Player
@@ -6,13 +7,16 @@ namespace Player
     {
         [Header("Components")]
         [SerializeField] private Rigidbody2D _rigidbody2D;
-
+        
         [Header("Stats")]
-        [SerializeField] private float _speed = 1;
-
+        [SerializeField] private float _movementSpeed = 1;
+        
         private Vector2 _movementVelocity;
         private Vector2 _movementInput;
         private Camera _camera;
+
+        private float _horizontalMove;
+        private float _verticalMove;
 
         private const float Offset = 270;
 
@@ -24,6 +28,7 @@ namespace Player
         private void Update()
         {
             GetInput();
+            RotatePlayer();
         }
 
         private void FixedUpdate()
@@ -33,17 +38,23 @@ namespace Player
 
         private void GetInput()
         {
-            _movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            _horizontalMove = Input.GetAxis("Horizontal");
+            _verticalMove = Input.GetAxis("Vertical");
         }
 
         private void MovePlayer()
         {
-            _movementVelocity = _movementInput * _speed;
-            _rigidbody2D.MovePosition(_rigidbody2D.position + _movementVelocity * Time.fixedDeltaTime);
+            _rigidbody2D.velocity = new Vector2(_horizontalMove * _movementSpeed, 
+                _verticalMove * _movementSpeed);
+        }
 
+        private void RotatePlayer()
+        {
             Vector3 difference = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rotZ + Offset);
         }
+
+
     }
 }
