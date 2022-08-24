@@ -13,12 +13,6 @@ namespace Player
         private void Start()
         {
             _health = 100;
-            _healthSlider.maxValue = _health;
-        }
-
-        private void Update()
-        {
-            _healthSlider.value = _health;
         }
         
         private void Die()
