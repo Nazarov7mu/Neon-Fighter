@@ -2,6 +2,6 @@ namespace Interfaces
 {
     public interface IDamageable
     {
-        public void ApplyDamage(int value);
+        public void GetDamage(int value);
     }
 }

@@ -201,8 +201,8 @@ MonoBehaviour:
   _enemies:
   - {fileID: 6221013284750821207, guid: 870d15bff95614d44a51364fd4323f10, type: 3}
   _mapSpawnPoints: {fileID: 8220213362385153223}
-  _spawnDelayMin: 3
-  _spawnDelayMax: 10
+  _spawnDelayMin: 10
+  _spawnDelayMax: 13
 --- !u!1 &4073569517707869790
 GameObject:
   m_ObjectHideFlags: 0

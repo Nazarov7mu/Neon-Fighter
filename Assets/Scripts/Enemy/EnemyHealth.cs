@@ -9,7 +9,7 @@ namespace Enemy
         
         private float _health = 100;
 
-        public void ApplyDamage(int value)
+        public void GetDamage(int value)
         {
             _health -= value;
             if (_health <= 0)

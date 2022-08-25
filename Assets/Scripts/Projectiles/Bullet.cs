@@ -34,7 +34,7 @@ namespace Projectiles
             if (!other.CompareTag(_tagToAvoid))
             {
                 IDamageable damageable = other.GetComponent<IDamageable>();
-                damageable?.ApplyDamage(_damage);
+                damageable?.GetDamage(_damage);
                 Explode();
             }
         }
