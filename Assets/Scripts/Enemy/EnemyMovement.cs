@@ -64,6 +64,8 @@ namespace Enemy
             
             _rigidbody2D.MovePosition((Vector2)transform.position +
                                       _direction * (_movementSpeed * Time.fixedDeltaTime));
+
+            _rigidbody2D.angularVelocity = 0f; // To avoid inertia movements after colliding with walls
         }
     }
 }

@@ -7,10 +7,10 @@ namespace Player
     {
         [Header("Components")]
         [SerializeField] private Rigidbody2D _rigidbody2D;
-        
+
         [Header("Stats")]
         [SerializeField] private float _movementSpeed = 1;
-        
+
         private Vector2 _movementVelocity;
         private Vector2 _movementInput;
         private Camera _camera;
@@ -44,8 +44,10 @@ namespace Player
 
         private void MovePlayer()
         {
-            _rigidbody2D.velocity = new Vector2(_horizontalMove * _movementSpeed, 
+            _rigidbody2D.velocity = new Vector2(_horizontalMove * _movementSpeed,
                 _verticalMove * _movementSpeed);
+
+            _rigidbody2D.angularVelocity = 0f; // To avoid inertia movements after colliding with walls
         }
 
         private void RotatePlayer()
@@ -54,7 +56,5 @@ namespace Player
             float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rotZ + Offset);
         }
-
-
     }
 }
