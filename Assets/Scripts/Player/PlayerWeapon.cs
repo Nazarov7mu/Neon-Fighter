@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using ObjectPooling;
 using UnityEngine;
 
 namespace Player
@@ -24,7 +25,8 @@ namespace Player
 
             if (Input.GetMouseButton(0))
             {
-                Instantiate(_bullet, _barrel.transform.position, _barrel.transform.rotation);
+                //Instantiate(_bullet, _barrel.transform.position, _barrel.transform.rotation);
+                Pooler.Instance.GetPooledObject(_bullet.name, _barrel.transform.position, _barrel.transform.rotation);
                 StartCoroutine(Reload());
             }
         }

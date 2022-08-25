@@ -42,7 +42,8 @@ namespace Projectiles
         private void Explode()
         {
             Instantiate(_explosionEffect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
